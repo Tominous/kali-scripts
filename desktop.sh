@@ -83,8 +83,8 @@ EOT
         fi
 
         if ask "Smaller title bar?" Y; then
-            #sed -i "/title_vertical_pad/s/value=\"[0-9]\{1,2\}\"/value=\"0\"/g" /usr/share/themes/Adwaita/metacity-1/metacity-theme-3.xml
-            #sed -i 's/title_scale=".*"/title_scale="small"/g' /usr/share/themes/Adwaita/metacity-1/metacity-theme-3.xml
+            sed -i "/title_vertical_pad/s/value=\"[0-9]\{1,2\}\"/value=\"0\"/g" /usr/share/themes/Adwaita/metacity-1/metacity-theme-3.xml
+            sed -i 's/title_scale=".*"/title_scale="small"/g' /usr/share/themes/Adwaita/metacity-1/metacity-theme-3.xml
             gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 10' # 'Cantarell Bold 11'
             gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
         fi
@@ -122,16 +122,16 @@ install_kde(){
     apt-get install kali-defaults kali-root-login desktop-base kde-plasma-desktop
 
     # How to install Netbook KDE Plasma Desktop Environment in Kali Linux:
-#    apt-get install kali-defaults kali-root-login desktop-base kde-plasma-netbook
+    apt-get install kali-defaults kali-root-login desktop-base kde-plasma-netbook
 
     # How to install Standard Debian selected packages and frameworks in Kali Linux:
-#    apt-get install kali-defaults kali-root-login desktop-base kde-standard
+    apt-get install kali-defaults kali-root-login desktop-base kde-standard
 
     # How to install KDE Full Install in Kali Linux:
-#    apt-get install kali-defaults kali-root-login desktop-base kde-full
+    apt-get install kali-defaults kali-root-login desktop-base kde-full
 
     # How to remove KDE on Kali Linux:
-#    apt-get remove kde-plasma-desktop kde-plasma-netbook kde-standard
+    apt-get remove kde-plasma-desktop kde-plasma-netbook kde-standard
 }
 
 # Install XFCE4
@@ -169,28 +169,28 @@ config_xfce(){
     echo -e '<Menu>\n\t<Name>Top 10</Name>\n\t<DefaultAppDirs/>\n\t<Directory>top10.directory</Directory>\n\t<Include>\n\t\t<Category>top10</Category>\n\t</Include>\n</Menu>' > /root/.config/xfce4/menu/top10.menu
     sed -i 's/^enable=.*/enable=False/' /etc/xdg/user-dirs.conf
 
-    # sed -i 's/^XDG_/#XDG_/; s/^#XDG_DESKTOP/XDG_DESKTOP/;' /root/.config/user-dirs.dirs
-    # rm -rf /root/{Documents,Downloads,Music,Pictures,Public,Templates,Videos}/
-    #rm -r /root/.cache/sessions/*
+     sed -i 's/^XDG_/#XDG_/; s/^#XDG_DESKTOP/XDG_DESKTOP/;' /root/.config/user-dirs.dirs
+     rm -rf /root/{Documents,Downloads,Music,Pictures,Public,Templates,Videos}/
+    rm -r /root/.cache/sessions/*
 
     # Install Shiki-Colors-Light-Menus and gnome-brave on demand
-#    if ask "Do you want to install Shiki-Colors-Light-Menus and gnome-brave?" Y; then
-#        wget http://xfce-look.org/CONTENT/content-files/142110-Shiki-Colors-Light-Menus.tar.gz -O /tmp/Shiki-Colors-Light-Menus.tar.gz
-#        tar zxf /tmp/Shiki-Colors-Light-Menus.tar.gz -C /root/.themes/
-#        xfconf-query -c xsettings -p /Net/ThemeName -s "Shiki-Colors-Light-Menus"
-#        xfconf-query -c xsettings -p /Net/IconThemeName -s "gnome-brave"
-#    fi
+    if ask "Do you want to install Shiki-Colors-Light-Menus and gnome-brave?" Y; then
+        wget http://xfce-look.org/CONTENT/content-files/142110-Shiki-Colors-Light-Menus.tar.gz -O /tmp/Shiki-Colors-Light-Menus.tar.gz
+        tar zxf /tmp/Shiki-Colors-Light-Menus.tar.gz -C /root/.themes/
+        xfconf-query -c xsettings -p /Net/ThemeName -s "Shiki-Colors-Light-Menus"
+        xfconf-query -c xsettings -p /Net/IconThemeName -s "gnome-brave"
+    fi
 
-#    print_status "Enable compositing. Needed to be run with X11!"
-#    xfconf-query -c xfwm4 -p /general/use_compositing -s true
+    print_status "Enable compositing. Needed to be run with X11!"
+    xfconf-query -c xfwm4 -p /general/use_compositing -s true
 
-    # print_status "Configure Thunar file browser (Need to re-login for effect)"
-    # #TODO: check file existance
-    # if [ ! -e /root/.config/Thunar/thunarrc ]; then
-    #     echo -e "[Configuration]\nLastShowHidden=TRUE" > /root/.config/Thunar/thunarrc;
-    # else
-    #     sed -i 's/LastShowHidden=.*/LastShowHidden=TRUE/' /root/.config/Thunar/thunarrc;
-    # fi
+     print_status "Configure Thunar file browser (Need to re-login for effect)"
+     #TODO: check file existance
+     if [ ! -e /root/.config/Thunar/thunarrc ]; then
+         echo -e "[Configuration]\nLastShowHidden=TRUE" > /root/.config/Thunar/thunarrc;
+     else
+         sed -i 's/LastShowHidden=.*/LastShowHidden=TRUE/' /root/.config/Thunar/thunarrc;
+     fi
 }
 
 install_desktop(){
