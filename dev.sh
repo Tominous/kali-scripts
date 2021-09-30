@@ -33,10 +33,10 @@ install_ruby(){
         curl -L https://get.rvm.io | bash -s stable
         source /usr/local/rvm/scripts/rvm
         rvm install 1.9.5 && rvm use 1.9.5 --default
-#        source /etc/profile.d/rvm.sh
+        source /etc/profile.d/rvm.sh
 
         # This loads RVM into a shell session.
-        #echo [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" >> ~/.bashrc
+        echo [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" >> ~/.bashrc
         echo source /usr/local/rvm/scripts/rvm >> ~/.bashrc
     fi
 
