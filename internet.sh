@@ -4,11 +4,11 @@
 
 install_chrome(){
     print_status "Adding Google Chrome to APT..."
-#    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-#    apt-get update -y && apt-get install google-chrome-stable -y
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+    apt-get update -y && apt-get install google-chrome-stable -y
     apt_add_key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
-#    apt_add_sources "deb http://dl.google.com/linux/chrome/deb/ stable main" "google-chrome"
+    apt_add_sources "deb http://dl.google.com/linux/chrome/deb/ stable main" "google-chrome"
     apt_add_source  "google-chrome"
     apt-get install google-chrome-stable -y
 
@@ -25,7 +25,7 @@ install_chromium(){
 install_firefox(){
     apt-get remove iceweasel
     apt_add_source  "ubuntuzilla"
-#    echo "deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main" > /etc/apt/sources.list.d/ubuntuzilla.list
+    echo "deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main" > /etc/apt/sources.list.d/ubuntuzilla.list
     apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
     apt-get update -y && apt-get install firefox-mozilla-build -y
 }
@@ -61,7 +61,7 @@ install_skype(){
     apt-get -f install
 
     apt-get install -y gdebi
-#    apt-get -f install
+    apt-get -f install
     apt-get autoclean
 }
 
@@ -73,8 +73,8 @@ install_tor(){
     chown debian-tor:debian-tor /var/run/tor
     chmod 02750 /var/run/tor
 
-#    /etc/init.d/tor start
-#    /etc/init.d/privoxy start
+    /etc/init.d/tor start
+    /etc/init.d/privoxy start
     #USE SOCKS PROXY 127.0.0.1:9059
 }
 
