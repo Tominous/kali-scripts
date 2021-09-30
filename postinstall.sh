@@ -97,9 +97,9 @@ config_metasploit(){
     service metasploit stop
     service metasploit start
     msfupdate
-#    echo exit > /tmp/msf.rc
-#    msfconsole -r /tmp/msf.rc
-#    rm /tmp/msf.rc
+    echo exit > /tmp/msf.rc
+    msfconsole -r /tmp/msf.rc
+    rm /tmp/msf.rc
 }
 
 config_grub(){
