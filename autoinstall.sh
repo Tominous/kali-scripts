@@ -27,5 +27,5 @@ install_pentest
 install_embedded
 install_wireless
 install_hardware
-#install_desktop
-#install_video
+install_desktop
+install_video
